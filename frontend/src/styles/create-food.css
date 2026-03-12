@@ -1,0 +1,66 @@
+@import "./theme.css";
+
+/* Small helper to blend with auth-card visuals */
+.video-preview {
+  margin: 8px 0;
+}
+
+/* Use the same auth card, but provide minor layout tweaks */
+.auth-card .form .input[type="file"] {
+  padding: 8px 10px;
+}
+
+/* A couple of small visual tweaks specifically for the form */
+.form .input[type="text"],
+.form textarea {
+  min-height: 44px;
+}
+
+/* A subtle difference for button position */
+.form .btn {
+  margin-top: 12px;
+}
+
+/* Spacing for small labels */
+.small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+/* Dropzone styles */
+.video-dropzone {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px dashed var(--border);
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.video-dropzone svg {
+  display: block;
+  flex: 0 0 36px;
+}
+.video-dropzone .drop-text {
+  color: var(--muted);
+  font-size: 14px;
+}
+.video-dropzone.active {
+  border-color: var(--primary);
+  background: rgba(27, 111, 255, 0.04);
+}
+.file-input-hidden {
+  display: none;
+}
+
+/* Override for smaller screens */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 14px;
+  }
+  .form .input {
+    padding: 10px;
+  }
+}

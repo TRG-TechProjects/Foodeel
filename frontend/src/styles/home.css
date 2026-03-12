@@ -1,0 +1,237 @@
+@import "./theme.css";
+
+.home-head{
+  position: absolute;
+  top: 3%;
+  left: 8%;
+  color: var(--text);
+  
+}
+
+/* Reels container with vertical scroll snapping */
+.home-reels {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 88px; /* leave space for fixed bottom nav */
+}
+
+.reel {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background: var(--surface);
+  display: grid;
+  place-items: center;
+}
+
+.reel video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform; /* hint for smoother playback */
+}
+
+/* Top overlay: description (max 2 lines) and 'Visit store' button under it */
+.reel-overlay {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  max-width: calc(100% - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 2;
+  pointer-events: none; /* allow clicks to pass through except the button */
+  padding-bottom: 80px; /* more space for Visit store and ensure description sits above */
+}
+
+.reel-description {
+  margin: 0 8px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* truncate to two lines */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: auto;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  padding: 6px 8px;
+  border-radius: 8px;
+  position: relative;
+  padding-right: 96px; /* space for visit store and see more */
+  margin-bottom: 4px; /* add a buffer to avoid overlapping edge */
+}
+
+.reel-description .see-more {
+  pointer-events: auto;
+}
+.reel-description .see-more {
+  position: absolute;
+  right: 8px;
+  /* bottom: 8px; */
+  background: transparent;
+  border: none;
+  color: var(--primary-contrast);
+  cursor: pointer;
+  font-weight: 600;
+  /* padding: 4px 8px; */
+}
+
+.reel-description.expanded {
+  display: block; /* remove the webkit-box clamping */
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  max-height: 60vh; /* avoid taking the full screen */
+  overflow-y: auto;
+}
+
+/* .reel-controls removed; kept as deprecated from earlier versions */
+
+.visit-store {
+  pointer-events: auto;
+  display: inline-block;
+  position: absolute;
+  right: 8px;
+  bottom: 50px;
+  background: var(--primary-700);
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  width: fit-content;
+  z-index: 3;
+}
+
+.visit-store:hover {
+  background: var(--primary);
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+/* subtle overlay gradient under the overlay for readability */
+.reel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 220px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+  z-index: 1;
+}
+
+/* Action column on the right (optional future interactions) */
+.reel-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 4;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.reel-actions .action-btn {
+  background: rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 8px;
+  border-radius: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  color: white;
+  cursor: pointer;
+}
+
+.reel-actions .action-btn svg {
+  display: block;
+}
+.reel-actions .action-count {
+  font-size: 12px;
+  line-height: 1;
+}
+
+/* Bottom navigation */
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.bottom-nav ul {
+  display: flex;
+  gap: 12px;
+  background: var(--surface);
+  /* background: rgba(0,0,0,0.45); */
+  padding: 8px 12px;
+  /* border-radius: 999px; */
+  list-style: none;
+  align-items: center;
+  justify-content: space-evenly;
+  width: -webkit-fill-available;
+  box-shadow: 0 -2px 10px var(--shadow);
+}
+
+.bottom-nav__item svg{
+  stroke: var(--muted);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+/* highlight last-clicked nav item using a body attribute persisted to sessionStorage */
+body[data-bottom-active="home"] .bottom-nav__item.home,
+body[data-bottom-active="saved"] .bottom-nav__item.saved {
+  background: rgba(0,0,0,0.04);
+  border-radius: 8px;
+}
+
+body[data-bottom-active="home"] .bottom-nav__item.home svg,
+body[data-bottom-active="saved"] .bottom-nav__item.saved svg {
+  stroke: var(--primary);
+}
+
+/* video clickable area hint */
+.reel video {
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .reel-overlay {
+    left: 12px;
+    bottom: 12px;
+    max-width: calc(100% - 24px);
+    padding-bottom: 96px;
+  }
+  .reel-actions {
+    right: 8px;
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .reel-description {
+    font-size: 15px;
+  }
+}

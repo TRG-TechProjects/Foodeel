@@ -1,0 +1,93 @@
+/* Minimal bluish theme — light and dark */
+
+:root {
+  --bg: #e1ecfc;
+  --surface: #ffffff;
+  --text: #0b2540;
+  --muted: #5b6b80;
+  --primary: #1b6fff;
+  --primary-700: #165bd6;
+  --primary-contrast: #ffffff;
+  --input-bg: #e1ecfc;
+  --border: #e6eef9;
+  --shadow: rgba(27,111,255,0.06);
+  --focus-shadow: rgba(27,111,255,0.14);
+  --radius: 10px;
+  --container-width: 380px;
+  --space: 16px;
+  --transition: 200ms ease-in-out;
+}
+/* :root {
+  --bg: #f3f8ff;
+  --surface: #ffffff;
+  --text: #0b2540;
+  --muted: #5b6b80;
+  --primary: #1b6fff;
+  --primary-700: #165bd6;
+  --primary-contrast: #ffffff;
+  --input-bg: #ffffff;
+  --border: #e6eef9;
+  --shadow: rgba(27,111,255,0.06);
+  --focus-shadow: rgba(27,111,255,0.14);
+  --radius: 10px;
+  --container-width: 380px;
+  --space: 16px;
+  --transition: 200ms ease-in-out;
+} */
+
+
+
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #191D88;
+    --surface: #1450A3;
+    --text: #FFC436;
+    --muted: #FFC436;
+    --primary: #FFC436;
+    --primary-700: #191D88;
+    --primary-contrast: #337CCF;
+    --input-bg: #1450A3;
+    --border: #337CCF;
+    --shadow: rgba(0,0,0,0.6);
+    --focus-shadow: rgba(31, 85, 151, 0.12);
+  }
+} */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #13263e;
+    --surface: #071428;
+    --text: #dff3ff;
+    --muted: #98a7b6;
+    --primary: #5b9dff;
+    --primary-700: #2f6fe6;
+    --primary-contrast: #061022;
+    --input-bg: #13263e;
+    --border: #102435;
+    --shadow: rgba(21, 21, 21, 0.6);
+    --focus-shadow: rgba(91,157,255,0.12);
+  }
+}
+
+
+
+
+
+
+
+
+
+/* const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const firstName = e.target.firstName.value;
+        const lastName = e.target.lastName.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        await axios.post("http://localhost:3000/api/auth/user/register", {
+            fullName: firstName + " " + lastName,
+            email,
+            password
+        }, )
+    }; */
