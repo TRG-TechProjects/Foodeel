@@ -23,7 +23,7 @@ const Saved = () => {
     if (v) document.body.setAttribute("data-bottom-active", v);
 
     axios
-      .get("http://localhost:3000/api/food/save", { withCredentials: true })
+      .get("http://foodeel-backend.onrender.com/api/food/save", { withCredentials: true })
       .then((response) => {
         const savedFood = (response.data.savedFoods || []).map((item) => ({
           _id: item.food._id,
@@ -44,7 +44,7 @@ const Saved = () => {
       // call backend to toggle save
       axios
         .post(
-          "http://localhost:3000/api/food/save",
+          "http://foodeel-backend.onrender.com/api/food/save",
           { foodId: id },
           { withCredentials: true }
         )
