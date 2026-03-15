@@ -22,7 +22,7 @@ const Profile = () => {
 
   useEffect(() => {
     axios
-      .get(`http://foodeel-backend.onrender.com/api/food-partner/${id}`, {
+      .get(`https://foodeel-backend.onrender.com/api/food-partner/${id}`, {
         withCredentials: true,
       })
       .then((response) => {

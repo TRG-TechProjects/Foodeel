@@ -163,7 +163,7 @@ const Home = () => {
 
   useEffect(() => {
     axios
-      .get("http://foodeel-backend.onrender.com/api/food", { withCredentials: true })
+      .get("https://foodeel-backend.onrender.com/api/food", { withCredentials: true })
       .then((response) => {
         console.log(response.data);
 
@@ -226,7 +226,7 @@ const Home = () => {
 
   async function likeVideo(reel) {
     const response = await axios.post(
-      "http://foodeel-backend.onrender.com/api/food/like",
+      "https://foodeel-backend.onrender.com/api/food/like",
       { foodId: reel._id },
       { withCredentials: true }
     );
@@ -250,7 +250,7 @@ const Home = () => {
 
   async function saveVideo(reel) {
     const response = await axios.post(
-      "http://foodeel-backend.onrender.com/api/food/save",
+      "https://foodeel-backend.onrender.com/api/food/save",
       { foodId: reel._id },
       { withCredentials: true }
     );

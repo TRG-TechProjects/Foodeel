@@ -16,7 +16,7 @@ const UserRegister = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        const response = await axios.post("http://foodeel-backend.onrender.com/api/auth/user/register", {
+        const response = await axios.post("https://foodeel-backend.onrender.com/api/auth/user/register", {
             fullName: firstName + " " + lastName,
             email,
             password
