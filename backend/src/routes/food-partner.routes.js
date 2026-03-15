@@ -8,7 +8,7 @@ const router = express.Router();
 
 /* /api/food-partner/:id */
 router.get('/:id', 
-    authMiddleware.authUserMiddleware,
+    // authMiddleware.authUserMiddleware,
     foodPartnerController.getFoodPartnerById)
 
 
